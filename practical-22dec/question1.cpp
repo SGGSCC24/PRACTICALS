@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 int main(){
-      int number , lastdigit ;
+      long int number , lastdigit ;
       cout<<"WRITE ANY NUMBER :   \n";
       cin>>number ;
       lastdigit = number%10 ;
