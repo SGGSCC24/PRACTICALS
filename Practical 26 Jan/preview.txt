@@ -1,0 +1,100 @@
+****************** ASSIGNMENT 26 JAN ******************
+
+
+Q.1 WAP to find factorial of a number using function.
+Code by: Om Gupta 214047
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int number,factorial=1;
+    cout<<"ENTER A NUMBER: ";
+    cin>>number;
+
+    for (int i = 1; i<=number;i++){
+        factorial *=i;
+    }
+    cout<<"Factorial of "<<number<<" is "<<factorial;
+    return 0;
+}
+
+*******************************************************
+
+Q.2 Write programs for following star patterns for n rows.
+a)
+*
+* *
+* * *
+* * * *
+* * * * *
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    unsigned int n;
+    cout<<"ENTER NUMBER OF ROWS: ";
+    cin>>n;
+    for (int row = 1; row<=n; row++){
+        for (int stars = 0; stars < row; stars++){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+
+
+b)
+        *
+      * *
+    * * *
+  * * * *
+* * * * *
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    unsigned int n;
+    cout<<"ENTER NUMBER OF ROWS: ";
+    cin>>n;
+    for (int row = 1; row<=n; row++){
+        for (int space = n; space > row; space--){
+            cout<<"  ";
+        }
+        for (int stars = 0; stars < row; stars++){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+
+
+c)
+* * * * *
+* * * *
+* * *
+* *
+*
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    unsigned int n;
+    cout<<"ENTER NUMBER OF ROWS: ";
+    cin>>n;
+    for (int row = 1; row<=n; row++){
+        for (int stars = n; stars >= row; stars--){
+            cout<<"* ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
