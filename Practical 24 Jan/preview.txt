@@ -1,0 +1,164 @@
+/*
+1) Write a menu-driven program to simulate a calculator. Your program should take 2 operands as input from the user and display a menu showing the 4 basic mathematical operations (+,-,*,/). The user should be able to choose 1 option and the output of the computation should be displayed accordingly.
+
+Code By: Om Gupta 214047
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    double operand1, operand2;
+    cout<<"ENTER 1st NUMBER: ";
+    cin>>operand1;
+    cout<<"ENTER 2nd NUMBER: ";
+    cin>>operand2;
+    int Operator;
+    cout<<"\n\t1) ADDITION \n\t2) SUBTRACTION\n\t3) MULTIPLICATION\n\t4) DIVISION\n\nCHOOSE THE OPERATION (1-4): ";
+    cin>>Operator;
+    
+    switch (Operator)
+    {
+    case 1:
+        cout<<"\nRESULT: \n\t"<<operand1<<" + "<<operand2<<" = "<<operand1+operand2;
+        break;
+    case 2:
+        cout<<"\nRESULT: \n\t"<<operand1<<" - "<<operand2<<" = "<<operand1-operand2;
+        break;
+    case 3:
+        cout<<"\nRESULT: \n\t"<<operand1<<" x "<<operand2<<" = "<<operand1*operand2;
+        break;
+    case 4:
+        cout<<"\n\tRESULT: \n\t"<<operand1<<" / "<<operand2<<" = "<<operand1/operand2;
+        break;
+    default:
+        cout<<"Invalid Operation!\nChoose only from 1 to 4.";
+        break;
+    }
+    return 0;
+}
+
+
+/****************************************************************/
+
+/*
+Code By: Om Gupta 214047 
+2) Write a program that determines a student’s grade. It reads three test scores (between 0 and 100) and calculates the grade based on the following rules:
+
+
+a. If the average score is 90 or more, the grade is ‘A’.
+b. If the average score is between 80 and 90, the program checks the third score.      If the third score is more than 90, the grade is ‘A’; otherwise, the grade is ‘B’.
+c. If the average score is between 70 and 80, the program checks the third score. If the third score is more than 80, the grade is ‘B’; otherwise, the grade is ‘C’.
+d. If the average score is between 60 and 70, the program checks the third score. If the third score is more than 70, the grade is ‘C’; otherwise, the grade is ‘D’.
+e. If the average score is less than 60, the program checks the third score. If the third score is more than 60, the grade is ‘D’; otherwise, the grade is ‘F’.
+
+The program’s main is to contain only call statements . At least three subfunctions are required: one to read scores, one to determine the grade, and one to print the results.
+*/
+
+#include<iostream>
+using namespace std;
+
+double read_score(int);
+double calc_avg(double, double, double);
+void print_result(double, double);
+int main(){
+	double score1 = read_score(1);
+	double score2 = read_score(2);
+	double score3 = read_score(3);
+	double avg_score = calc_avg(score1, score2, score3);
+	if (avg_score) print_result(avg_score, score3);
+	return 0;
+}
+
+double read_score(int serial){
+	double score;
+	cout<<"Enter the marks of subject "<<serial<<": ";
+	cin>>score;
+	return score;
+}
+
+double calc_avg(double score1, double score2, double score3){
+	if (score1>100 || score2>100 || score3>100){ cout<<"Invalid Scores Entered !";
+	return 0;
+	}
+	else return (score1+score2+score3)/3;
+}
+
+void print_result(double avg_score, double score3){
+	if (avg_score >= 90)
+		cout<<"GRADE A";
+	else if (avg_score >= 80)
+		if (score3 > 90) cout<<"GRADE A";
+		else cout<<"GRADE B";
+	else if (avg_score >= 70)
+		if (score3 > 80) cout<<"GRADE B";
+		else cout<<"GRADE C";
+	else if (avg_score >= 60)
+		if (score3 > 70) cout<<"GRADE C";
+		else cout<<"GRADE D";
+	else if (avg_score < 60)
+		if (score3 > 60) cout<<"GRADE D";
+		else cout<<"GRADE F";
+	else cout<<"Invalid Scores Entered!";
+}
+
+
+/****************************************************************/
+
+/*
+3) Write a program to compute the real roots of a quadratic equation (ax2 + bx + c = 0).
+Your program is to prompt the user to enter the constants (a,b,c). It should then display the roots based on the following rules:
+
+If both a and b are zero, there is no solution.
+If a is zero, there is only one root (-c/b).
+If the discriminant (b2 - 4ac) is negative, there are no real roots.
+For all other combinations, there are two roots.
+
+code by : Om Gupta 214047
+
+*/
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+    float a,b,c;
+    
+    cout<<"Enter coefficient of x^2: ";
+    cin>>a;
+
+    cout<<endl<<"Enter coefficient of x: ";
+    cin>>b;
+    
+    cout<<endl<<"Enter the constant: ";
+    cin>>c;
+
+    if (a==0){
+        if (b==0){
+            cout<<"\nNo Roots Possible! ";
+            return 0;
+        }
+        else{
+        cout<<"\nRoot is :"<<-c/b;
+        return 0;
+        }
+    }
+    float D = b*b - 4*a*c;
+    cout<<endl<<"Discriminant: "<<D<<endl;
+
+    if (D<0){
+        cout<<endl<<"No real roots exists.";
+    }else if(D==0){
+        float root1 = -b/(2*a);
+        float root2 = -b/(2*a);
+        cout<<endl<<"Roots are: "<<root1<<", "<<root2;
+    }else{
+        float root1 = (-b + sqrt(D) ) / (2*a);
+        float root2 = (-b - sqrt(D) ) / (2*a);
+        cout<<endl<<"Roots are: "<<root1<<", "<<root2;
+    }
+    return 0;
+    
+}
