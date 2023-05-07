@@ -1,0 +1,592 @@
+
+mysql> DESC EMPLOYEE;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| Eno           | char(3)       | NO   | PRI | NULL    |       |
+| Ename         | varchar(50)   | NO   |     | NULL    |       |
+| Job_type      | varchar(50)   | NO   |     | NULL    |       |
+| SupervisorENo | char(3)       | YES  | MUL | NULL    |       |
+| Hire_date     | date          | NO   |     | NULL    |       |
+| Dno           | int           | YES  | MUL | NULL    |       |
+| Commission    | decimal(10,2) | YES  |     | NULL    |       |
+| Salary        | decimal(7,2)  | NO   |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> DESC DEPARTMENT;
++----------+-------------+------+-----+-----------+-------+
+| Field    | Type        | Null | Key | Default   | Extra |
++----------+-------------+------+-----+-----------+-------+
+| Dno      | int         | NO   | PRI | NULL      |       |
+| Dname    | varchar(50) | YES  |     | NULL      |       |
+| Location | varchar(50) | YES  |     | New Delhi |       |
++----------+-------------+------+-----+-----------+-------+
+3 rows in set (0.00 sec)
+
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| Eno           | char(3)       | NO   | PRI | NULL    |       |
+| Ename         | varchar(50)   | NO   |     | NULL    |       |
+| Job_type      | varchar(50)   | NO   |     | NULL    |       |
+| SupervisorENo | char(3)       | YES  | MUL | NULL    |       |
+| Hire_date     | date          | NO   |     | NULL    |       |
+| Dno           | int           | YES  | MUL | NULL    |       |
+| Commission    | decimal(10,2) | YES  |     | NULL    |       |
+| Salary        | decimal(7,2)  | NO   |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
++----------+-------------+------+-----+-----------+-------+
+| Field    | Type        | Null | Key | Default   | Extra |
++----------+-------------+------+-----+-----------+-------+
+| Dno      | int         | NO   | PRI | NULL      |       |
+| Dname    | varchar(50) | YES  |     | NULL      |       |
+| Location | varchar(50) | YES  |     | New Delhi |       |
++----------+-------------+------+-----+-----------+-------+
+3 rows in set (0.00 sec)
+
++-----+--------+-----------+------------+
+| Eno | Ename  | Job_type  | Hire_date  |
++-----+--------+-----------+------------+
+| 736 | Smith  | Clerk     | 1980-12-17 |
+| 749 | Allan  | Sales_man | 1981-02-20 |
+| 752 | Ward   | Sales_man | 1981-02-22 |
+| 756 | Jones  | Manager   | 1981-04-02 |
+| 765 | Martin | Sales_man | 1981-04-22 |
+| 769 | Blake  | Manager   | 1981-05-01 |
+| 778 | Clark  | Manager   | 1981-06-09 |
+| 783 | King   | President | 1981-11-17 |
+| 784 | Turner | Sales_man | 1981-09-08 |
+| 787 | Adams  | Clerk     | 1983-01-12 |
+| 788 | Scott  | Analyst   | 1982-12-09 |
+| 790 | James  | Clerk     | 1981-12-03 |
+| 792 | Ford   | Analyst   | 1981-12-03 |
+| 793 | Miller | Clerk     | 1982-01-23 |
++-----+--------+-----------+------------+
+14 rows in set (0.00 sec)
+
++-----------+
+| Job_type  |
++-----------+
+| Clerk     |
+| Sales_man |
+| Manager   |
+| President |
+| Analyst   |
++-----------+
+5 rows in set (0.01 sec)
+
++------------------+
+| Employee_Job     |
++------------------+
+| Smith,Clerk      |
+| Allan,Sales_man  |
+| Ward,Sales_man   |
+| Jones,Manager    |
+| Martin,Sales_man |
+| Blake,Manager    |
+| Clark,Manager    |
+| King,President   |
+| Turner,Sales_man |
+| Adams,Clerk      |
+| Scott,Analyst    |
+| James,Clerk      |
+| Ford,Analyst     |
+| Miller,Clerk     |
++------------------+
+14 rows in set (0.00 sec)
+
++--------------------------------------------------------+
+| THE_OUTPUT                                             |
++--------------------------------------------------------+
+| 736,Smith,Clerk,790,1980-12-17,20,0.00,1000.00         |
+| 749,Allan,Sales_man,769,1981-02-20,30,300.00,2000.00   |
+| 752,Ward,Sales_man,769,1981-02-22,30,500.00,1300.00    |
+| 756,Jones,Manager,783,1981-04-02,20,0.00,2300.00       |
+| 765,Martin,Sales_man,769,1981-04-22,30,1400.00,1250.00 |
+| 769,Blake,Manager,783,1981-05-01,30,0.00,2870.00       |
+| 778,Clark,Manager,783,1981-06-09,10,0.00,2900.00       |
+| 783,King,President,,1981-11-17,10,0.00,2950.00         |
+| 784,Turner,Sales_man,769,1981-09-08,30,0.00,1450.00    |
+| 787,Adams,Clerk,778,1983-01-12,20,0.00,1150.00         |
+| 788,Scott,Analyst,756,1982-12-09,20,0.00,2850.00       |
+| 790,James,Clerk,769,1981-12-03,30,0.00,950.00          |
+| 792,Ford,Analyst,756,1981-12-03,20,0.00,2600.00        |
+| 793,Miller,Clerk,788,1982-01-23,40,0.00,1300.00        |
++--------------------------------------------------------+
+14 rows in set (0.00 sec)
+
++-------+---------+
+| Ename | Salary  |
++-------+---------+
+| Blake | 2870.00 |
+| Clark | 2900.00 |
+| King  | 2950.00 |
++-------+---------+
+3 rows in set (0.00 sec)
+
+Empty set (0.00 sec)
+
++--------+---------+
+| Ename  | Salary  |
++--------+---------+
+| Smith  | 1000.00 |
+| Ward   | 1300.00 |
+| Martin | 1250.00 |
+| Blake  | 2870.00 |
+| Clark  | 2900.00 |
+| King   | 2950.00 |
+| Turner | 1450.00 |
+| Adams  | 1150.00 |
+| James  |  950.00 |
+| Miller | 1300.00 |
++--------+---------+
+10 rows in set (0.01 sec)
+
++--------+------------+
+| Ename  | Dname      |
++--------+------------+
+| Allan  | Sales      |
+| Blake  | Sales      |
+| Clark  | Accounting |
+| James  | Sales      |
+| King   | Accounting |
+| Martin | Sales      |
+| Turner | Sales      |
+| Ward   | Sales      |
++--------+------------+
+8 rows in set (0.00 sec)
+
++--------+------------+
+| Ename  | Hire_date  |
++--------+------------+
+| Allan  | 1981-02-20 |
+| Ward   | 1981-02-22 |
+| Jones  | 1981-04-02 |
+| Martin | 1981-04-22 |
+| Blake  | 1981-05-01 |
+| Clark  | 1981-06-09 |
+| King   | 1981-11-17 |
+| Turner | 1981-09-08 |
+| James  | 1981-12-03 |
+| Ford   | 1981-12-03 |
++--------+------------+
+10 rows in set (0.00 sec)
+
++-------+-----------+
+| Ename | Job_type  |
++-------+-----------+
+| King  | President |
++-------+-----------+
+1 row in set (0.00 sec)
+
++--------+---------+------------+
+| Ename  | Salary  | Commission |
++--------+---------+------------+
+| Smith  | 1000.00 |       0.00 |
+| Allan  | 2000.00 |     300.00 |
+| Ward   | 1300.00 |     500.00 |
+| Jones  | 2300.00 |       0.00 |
+| Martin | 1250.00 |    1400.00 |
+| Blake  | 2870.00 |       0.00 |
+| Clark  | 2900.00 |       0.00 |
+| King   | 2950.00 |       0.00 |
+| Turner | 1450.00 |       0.00 |
+| Adams  | 1150.00 |       0.00 |
+| Scott  | 2850.00 |       0.00 |
+| James  |  950.00 |       0.00 |
+| Ford   | 2600.00 |       0.00 |
+| Miller | 1300.00 |       0.00 |
++--------+---------+------------+
+14 rows in set (0.00 sec)
+
++-----+--------+-----------+---------------+------------+------+------------+---------+
+| Eno | Ename  | Job_type  | SupervisorENo | Hire_date  | Dno  | Commission | Salary  |
++-----+--------+-----------+---------------+------------+------+------------+---------+
+| 783 | King   | President | NULL          | 1981-11-17 |   10 |       0.00 | 2950.00 |
+| 778 | Clark  | Manager   | 783           | 1981-06-09 |   10 |       0.00 | 2900.00 |
+| 769 | Blake  | Manager   | 783           | 1981-05-01 |   30 |       0.00 | 2870.00 |
+| 788 | Scott  | Analyst   | 756           | 1982-12-09 |   20 |       0.00 | 2850.00 |
+| 792 | Ford   | Analyst   | 756           | 1981-12-03 |   20 |       0.00 | 2600.00 |
+| 756 | Jones  | Manager   | 783           | 1981-04-02 |   20 |       0.00 | 2300.00 |
+| 749 | Allan  | Sales_man | 769           | 1981-02-20 |   30 |     300.00 | 2000.00 |
+| 784 | Turner | Sales_man | 769           | 1981-09-08 |   30 |       0.00 | 1450.00 |
+| 752 | Ward   | Sales_man | 769           | 1981-02-22 |   30 |     500.00 | 1300.00 |
+| 793 | Miller | Clerk     | 788           | 1982-01-23 |   40 |       0.00 | 1300.00 |
+| 765 | Martin | Sales_man | 769           | 1981-04-22 |   30 |    1400.00 | 1250.00 |
+| 787 | Adams  | Clerk     | 778           | 1983-01-12 |   20 |       0.00 | 1150.00 |
+| 736 | Smith  | Clerk     | 790           | 1980-12-17 |   20 |       0.00 | 1000.00 |
+| 790 | James  | Clerk     | 769           | 1981-12-03 |   30 |       0.00 |  950.00 |
++-----+--------+-----------+---------------+------------+------+------------+---------+
+14 rows in set (0.00 sec)
+
++-------+
+| Ename |
++-------+
+| Blake |
+| Clark |
+| Adams |
++-------+
+3 rows in set (0.00 sec)
+
++--------+
+| Ename  |
++--------+
+| Allan  |
+| Ward   |
+| Martin |
+| Blake  |
+| Turner |
+| Adams  |
+| James  |
++--------+
+7 rows in set (0.00 sec)
+
++--------+---------+------------+
+| Ename  | Salary  | Commission |
++--------+---------+------------+
+| Martin | 1250.00 |    1400.00 |
++--------+---------+------------+
+1 row in set (0.00 sec)
+
++-------------+----------------+
+| DATE(NOW()) | DAYNAME(NOW()) |
++-------------+----------------+
+| 2023-04-25  | Tuesday        |
++-------------+----------------+
+1 row in set (0.00 sec)
+
++--------+------------+--------------------+
+| Ename  | Hire_date  | Salary_review_date |
++--------+------------+--------------------+
+| Smith  | 1980-12-17 | 1981-06-22         |
+| Allan  | 1981-02-20 | 1981-08-24         |
+| Ward   | 1981-02-22 | 1981-08-24         |
+| Jones  | 1981-04-02 | 1981-10-05         |
+| Martin | 1981-04-22 | 1981-10-26         |
+| Blake  | 1981-05-01 | 1981-11-02         |
+| Clark  | 1981-06-09 | 1981-12-14         |
+| King   | 1981-11-17 | 1982-05-17         |
+| Turner | 1981-09-08 | 1982-03-08         |
+| Adams  | 1983-01-12 | 1983-07-18         |
+| Scott  | 1982-12-09 | 1983-06-13         |
+| James  | 1981-12-03 | 1982-06-07         |
+| Ford   | 1981-12-03 | 1982-06-07         |
+| Miller | 1982-01-23 | 1982-07-26         |
++--------+------------+--------------------+
+14 rows in set (0.01 sec)
+
+Empty set (0.00 sec)
+
++--------------------------------------------------+
+| Dream Salary                                     |
++--------------------------------------------------+
+| Smith earns $1000.00 monthly but wants $3000.00  |
+| Allan earns $2000.00 monthly but wants $6000.00  |
+| Ward earns $1300.00 monthly but wants $3900.00   |
+| Jones earns $2300.00 monthly but wants $6900.00  |
+| Martin earns $1250.00 monthly but wants $3750.00 |
+| Blake earns $2870.00 monthly but wants $8610.00  |
+| Clark earns $2900.00 monthly but wants $8700.00  |
+| King earns $2950.00 monthly but wants $8850.00   |
+| Turner earns $1450.00 monthly but wants $4350.00 |
+| Adams earns $1150.00 monthly but wants $3450.00  |
+| Scott earns $2850.00 monthly but wants $8550.00  |
+| James earns $950.00 monthly but wants $2850.00   |
+| Ford earns $2600.00 monthly but wants $7800.00   |
+| Miller earns $1300.00 monthly but wants $3900.00 |
++--------------------------------------------------+
+14 rows in set (0.00 sec)
+
++--------+---------------+
+| Name   | LENGTH(Ename) |
++--------+---------------+
+| Allan  |             5 |
+| Jones  |             5 |
+| Martin |             6 |
+| Adams  |             5 |
+| James  |             5 |
+| Miller |             6 |
++--------+---------------+
+6 rows in set (0.00 sec)
+
++--------+------------+--------------------+
+| Ename  | Hire_date  | DAYNAME(Hire_date) |
++--------+------------+--------------------+
+| Smith  | 1980-12-17 | Wednesday          |
+| Allan  | 1981-02-20 | Friday             |
+| Ward   | 1981-02-22 | Sunday             |
+| Jones  | 1981-04-02 | Thursday           |
+| Martin | 1981-04-22 | Wednesday          |
+| Blake  | 1981-05-01 | Friday             |
+| Clark  | 1981-06-09 | Tuesday            |
+| King   | 1981-11-17 | Tuesday            |
+| Turner | 1981-09-08 | Tuesday            |
+| Adams  | 1983-01-12 | Wednesday          |
+| Scott  | 1982-12-09 | Thursday           |
+| James  | 1981-12-03 | Thursday           |
+| Ford   | 1981-12-03 | Thursday           |
+| Miller | 1982-01-23 | Saturday           |
++--------+------------+--------------------+
+14 rows in set (0.00 sec)
+
++--------+------+------------+
+| Ename  | Dno  | Dname      |
++--------+------+------------+
+| Clark  |   10 | Accounting |
+| King   |   10 | Accounting |
+| Smith  |   20 | Research   |
+| Jones  |   20 | Research   |
+| Adams  |   20 | Research   |
+| Scott  |   20 | Research   |
+| Ford   |   20 | Research   |
+| Allan  |   30 | Sales      |
+| Ward   |   30 | Sales      |
+| Martin |   30 | Sales      |
+| Blake  |   30 | Sales      |
+| Turner |   30 | Sales      |
+| James  |   30 | Sales      |
+| Miller |   40 | Operations |
++--------+------+------------+
+14 rows in set (0.00 sec)
+
++-----------+
+| Job_type  |
++-----------+
+| Sales_man |
+| Manager   |
+| Clerk     |
++-----------+
+3 rows in set (0.00 sec)
+
++--------+------------+
+| Ename  | Dname      |
++--------+------------+
+| Allan  | Sales      |
+| Ward   | Sales      |
+| Martin | Sales      |
+| Blake  | Sales      |
+| Clark  | Accounting |
+| Adams  | Research   |
+| James  | Sales      |
++--------+------------+
+7 rows in set (0.00 sec)
+
++-------+----------+------+----------+
+| Ename | Job_type | Dno  | Dname    |
++-------+----------+------+----------+
+| Smith | Clerk    |   20 | Research |
+| Jones | Manager  |   20 | Research |
+| Adams | Clerk    |   20 | Research |
+| Scott | Analyst  |   20 | Research |
+| Ford  | Analyst  |   20 | Research |
++-------+----------+------+----------+
+5 rows in set (0.00 sec)
+
++--------+-----+----------------+---------------+
+| Ename  | Eno | SupervisorName | SupervisorEno |
++--------+-----+----------------+---------------+
+| Smith  | 736 | James          | 790           |
+| Allan  | 749 | Blake          | 769           |
+| Ward   | 752 | Blake          | 769           |
+| Jones  | 756 | King           | 783           |
+| Martin | 765 | Blake          | 769           |
+| Blake  | 769 | King           | 783           |
+| Clark  | 778 | King           | 783           |
+| King   | 783 | NULL           | NULL          |
+| Turner | 784 | Blake          | 769           |
+| Adams  | 787 | Clark          | 778           |
+| Scott  | 788 | Jones          | 756           |
+| James  | 790 | Blake          | 769           |
+| Ford   | 792 | Jones          | 756           |
+| Miller | 793 | Scott          | 788           |
++--------+-----+----------------+---------------+
+14 rows in set (0.00 sec)
+
+Empty set (0.00 sec)
+
++--------+--------------------------------+
+| Ename  | Salary_Star                    |
++--------+--------------------------------+
+| Smith  | **********                     |
+| Allan  | ********************           |
+| Ward   | *************                  |
+| Jones  | ***********************        |
+| Martin | *************                  |
+| Blake  | *****************************  |
+| Clark  | *****************************  |
+| King   | ****************************** |
+| Turner | ***************                |
+| Adams  | ************                   |
+| Scott  | *****************************  |
+| James  | **********                     |
+| Ford   | **************************     |
+| Miller | *************                  |
++--------+--------------------------------+
+14 rows in set (0.00 sec)
+
++-------------+-------------+-------------+-------------+
+| MAX(Salary) | MIN(Salary) | SUM(Salary) | AVG(Salary) |
++-------------+-------------+-------------+-------------+
+|     2950.00 |      950.00 |    26870.00 | 1919.285714 |
++-------------+-------------+-------------+-------------+
+1 row in set (0.00 sec)
+
++-----------+---------------------+
+| Job_type  | COUNT(DISTINCT Eno) |
++-----------+---------------------+
+| Analyst   |                   2 |
+| Clerk     |                   4 |
+| Manager   |                   3 |
+| President |                   1 |
+| Sales_man |                   4 |
++-----------+---------------------+
+5 rows in set (0.01 sec)
+
++-------------------------------+
+| COUNT(DISTINCT SupervisorENo) |
++-------------------------------+
+|                             6 |
++-------------------------------+
+1 row in set (0.00 sec)
+
++------------+----------+-------------------+-----------+
+| Dname      | Location | NumberOfEmployees | AvgSalary |
++------------+----------+-------------------+-----------+
+| Research   | Dallas   |                 5 |   1980.00 |
+| Sales      | Chigago  |                 6 |   1636.67 |
+| Accounting | New York |                 2 |   2925.00 |
+| Operations | Boston   |                 1 |   1300.00 |
++------------+----------+-------------------+-----------+
+4 rows in set (0.00 sec)
+
++--------+------------+
+| Ename  | Hire_date  |
++--------+------------+
+| Allan  | 1981-02-20 |
+| Ward   | 1981-02-22 |
+| Martin | 1981-04-22 |
+| Blake  | 1981-05-01 |
+| Turner | 1981-09-08 |
+| James  | 1981-12-03 |
++--------+------------+
+6 rows in set (0.01 sec)
+
++-------+---------+
+| Ename | Salary  |
++-------+---------+
+| Allan | 2000.00 |
+| Jones | 2300.00 |
+| Blake | 2870.00 |
+| Clark | 2900.00 |
+| King  | 2950.00 |
+| Scott | 2850.00 |
+| Ford  | 2600.00 |
++-------+---------+
+7 rows in set (0.00 sec)
+
++-----+--------+
+| Eno | Ename  |
++-----+--------+
+| 736 | Smith  |
+| 756 | Jones  |
+| 787 | Adams  |
+| 788 | Scott  |
+| 792 | Ford   |
+| 749 | Allan  |
+| 752 | Ward   |
+| 765 | Martin |
+| 769 | Blake  |
+| 784 | Turner |
+| 790 | James  |
++-----+--------+
+11 rows in set (0.00 sec)
+
++-------+---------+
+| Ename | Salary  |
++-------+---------+
+| Jones | 2300.00 |
+| Blake | 2870.00 |
+| Clark | 2900.00 |
++-------+---------+
+3 rows in set (0.00 sec)
+
++------+--------+-----------+
+| Dno  | Ename  | Job_type  |
++------+--------+-----------+
+|   30 | Allan  | Sales_man |
+|   30 | Ward   | Sales_man |
+|   30 | Martin | Sales_man |
+|   30 | Blake  | Manager   |
+|   30 | Turner | Sales_man |
+|   30 | James  | Clerk     |
++------+--------+-----------+
+6 rows in set (0.00 sec)
+
++--------+------------+
+| Ename  | Dname      |
++--------+------------+
+| Clark  | Accounting |
+| King   | Accounting |
+| Smith  | Research   |
+| Jones  | Research   |
+| Adams  | Research   |
+| Scott  | Research   |
+| Ford   | Research   |
+| Allan  | Sales      |
+| Ward   | Sales      |
+| Martin | Sales      |
+| Blake  | Sales      |
+| Turner | Sales      |
+| James  | Sales      |
+| Miller | Operations |
++--------+------------+
+14 rows in set (0.00 sec)
+
++-----------+----------+
+| Location  | COUNT(*) |
++-----------+----------+
+| New York  |        1 |
+| Dallas    |        1 |
+| Chigago   |        1 |
+| Boston    |        1 |
+| New Delhi |        1 |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+Empty set (0.00 sec)
+
++--------+
+| Ename  |
++--------+
+| Smith  |
+| Allan  |
+| Ward   |
+| Martin |
+| Turner |
+| Adams  |
+| Ford   |
+| Miller |
++--------+
+8 rows in set (0.00 sec)
+
++-----------+----------+
+| Job_type  | COUNT(*) |
++-----------+----------+
+| Clerk     |        4 |
+| Sales_man |        4 |
+| President |        1 |
++-----------+----------+
+3 rows in set (0.00 sec)
+
++------+------------+----------+
+| Dno  | Dname      | COUNT(*) |
++------+------------+----------+
+|   10 | Accounting |        2 |
+|   20 | Research   |        5 |
+|   30 | Sales      |        6 |
+|   40 | Operations |        1 |
++------+------------+----------+
+4 rows in set (0.00 sec)
